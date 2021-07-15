@@ -114,7 +114,7 @@ To view the results of the aruco marker launch file run in a new terminal:
 ```
 ![image](https://user-images.githubusercontent.com/78880630/125129383-3bfb6b80-e0b4-11eb-9539-661f272b1f4e.png)
 
-The aruco marker will create the transformation from the camera frame to the marker frame. This is where the static_transform_publisher will be useful. We can then find the transformation from the end effector frame to the base frame of the robot to get its position relative to the camera frame. To do this edit node with name="robot_base_broadcaster" in the file [static_frame.launch](https://github.com/nickhward/Aubo-Pick-And-Place/blob/main/static_frame.launch) and insert the the x y z rz ry rx where the numbers are in `args`. These values can be found directly from the teach pendant on the Aubo ipad. Then run the command in a new terminal: 
+The aruco marker will create the transformation from the camera frame to the marker frame. This is where the static_transform_publisher will be useful. We can then find the transformation from the end effector frame to the base frame of the robot to get its position relative to the camera frame. To do this edit node with name="robot_base_broadcaster" in the file [static_frame.launch](https://github.com/aralab-unr/Aubo-Deep-Object-Grasping/blob/main/static_frame.launch) and insert the the x y z rz ry rx where the numbers are in `args`. These values can be found directly from the teach pendant on the Aubo ipad. Then run the command in a new terminal: 
 
 ```
    roslaunch static_frame.launch
@@ -149,7 +149,7 @@ A new window will pop up with bounding boxes around the objects YOLO has been tr
 
 **Cloud Clustering and Centroids**
 
-The .cpp file [pass_through.cpp](https://github.com/nickhward/Aubo-Pick-And-Place/blob/main/pass_through.cpp) filters out the point cloud. It uses a voxel filter, a statistical filter, and a table top filter. Then inorder to only obtain the objects I used a function called Euclidean Cluster Extraction. This will cluster each object, and we can compute the 3D centroids of each object, then convert the centroids into 2D. The 2D Centroids will be compared to the center point of the bounding box from the rostopic(/darknet_ros/bounding_boxes). The object that is selected will have the shortest euclidean distance between the bounding box center point and the 2D centroid. 
+The .cpp file [passthrough.cpp](https://github.com/aralab-unr/Aubo-Deep-Object-Grasping/blob/main/passthrough.cpp) filters out the point cloud. It uses a voxel filter, a statistical filter, and a table top filter. Then inorder to only obtain the objects I used a function called Euclidean Cluster Extraction. This will cluster each object, and we can compute the 3D centroids of each object, then convert the centroids into 2D. The 2D Centroids will be compared to the center point of the bounding box from the rostopic(/darknet_ros/bounding_boxes). The object that is selected will have the shortest euclidean distance between the bounding box center point and the 2D centroid. 
 
 ![image](https://user-images.githubusercontent.com/78880630/125390026-03c78780-e357-11eb-9b8b-d30ff195a686.png)
 
@@ -189,7 +189,7 @@ With the Aubo Driver running from the command `roslaunch my_aubo_i5_robot_config
    rosrun my_aubo_i5_robot_config pick_place
 ```
 
-The real robot will then try to go to the grasp pose by finding ik solutions. If it says failed-No IK_solutions found just restart [pick_place](https://github.com/nickhward/Aubo-Pick-And-Place/blob/main/pick_place.cpp) until it works. If you have tried to restart it more than five times you may just have an unreachable grasp for your robot and will have to find another grasp that is reachable. 
+The real robot will then try to go to the grasp pose by finding ik solutions. If it says failed-No IK_solutions found just restart [pick_place](https://github.com/aralab-unr/Aubo-Deep-Object-Grasping/blob/main/pick_place.cpp) until it works. If you have tried to restart it more than five times you may just have an unreachable grasp for your robot and will have to find another grasp that is reachable. 
 
 An error with the robot controller may occur that says:
 
@@ -197,7 +197,7 @@ An error with the robot controller may occur that says:
    [ERROR] [1415027195.809289492]: Controller is taking too long to execute trajectory (the expected upper bound for the trajectory execution was 4.992567 seconds). Stopping trajectory.
 ```
 
-To fix this issue go into the file [trajectory_execution.launch](https://github.com/nickhward/Aubo-Pick-And-Place/blob/main/my_aubo_i5_robot_config/launch/trajectory_execution.launch.xml). Here, change `value="1.2"`  ->  `value="3"` in the parameter:
+To fix this issue go into the file [trajectory_execution.launch](https://github.com/aralab-unr/Aubo-Deep-Object-Grasping/blob/main/my_aubo_i5_robot_config/launch/trajectory_execution.launch.xml). Here, change `value="1.2"`  ->  `value="3"` in the parameter:
 
 ```
    <param name="trajectory_execution/allowed_execution_duration_scaling" value="1.2"/>
@@ -285,7 +285,7 @@ Press ENTER to save the key to the default location. Should be at /.ssh/id_rsa.p
 
 Copy the generated key from your terminal then go to your GitHub profile. Follow the links: `Settings -> SSH and GPG keys`. Click "New ssh key", paste the ssh key into the key field. Click "Add key". Now you should be able to clone the darknet ros repository with no problems. 
    
-If training a YOLO model on custom objects is necessary follow [this](https://github.com/AlexeyAB/darknet) guide. I ran into an issue where opencv couldn't find my images. To fix this, I ran the program [preprocess.py](https://github.com/nickhward/Aubo-Pick-And-Place/blob/main/preprocess.py) with the command:
+If training a YOLO model on custom objects is necessary follow [this](https://github.com/AlexeyAB/darknet) guide. I ran into an issue where opencv couldn't find my images. To fix this, I ran the program [preprocess.py](https://github.com/aralab-unr/Aubo-Deep-Object-Grasping/blob/main/preprocess.py) with the command:
    
 ```
    python preprocess.py   
