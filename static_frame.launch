@@ -1,0 +1,47 @@
+<launch>
+<!-- <node pkg="tf" type="static_transform_publisher" name="end_effector_broadcaster" args="0 0 -0.02 3.14159 0 0 aruco_marker_frame end_effector_frame  100" /> -->
+
+<!-- <node pkg="tf" type="static_transform_publisher" name="robot_base_broadcaster" args=" -0.587032  -0.130785  0.169324  0.014030  0.076970  -1.617693  end_effector_frame base_link_calculated  100" /> -->
+
+
+
+<node pkg="tf" type="static_transform_publisher" name="cam_broadcaster" args="   -0.504  0.279  0.313  0.739  -0.276  0.188  0.585  camera_rgb_optical_frame  base_link_calculated   100" /> 
+<node pkg="tf" type="static_transform_publisher" name="base_offest" args="0 0 0 3.14159 0 0 base_link base_link_calculated 100" />
+<!-- <node pkg="tf" type="static_transform_publisher" name="base_offset" args="0 0 0.05 1.5708 0 0 base_link_calculated base_link 100" /> -->
+<node pkg="tf" type="static_transform_publisher" name="base_offset" args="-0.256  0.509  0.324  0.276  0.739  -0.585  -0.188 base_link  camera_rgb_optical_frame 100" />
+<node pkg="tf" type="static_transform_publisher" name="grasp_broadcaster" args=" 0.0944697826396  0.223487233045  0.869068978968  -0.403448148156  0.561046864497  -0.420255009936  0.58808310145  camera_rgb_optical_frame  grasp_pose_frame 100" />
+<node pkg="tf" type="static_transform_publisher" name="grasp_pose_offset_broadcaster" args=" 0 0.10 0 0 0 1.5708 grasp_pose_frame  grasp_pose_frame_offset 100" /> 
+<node pkg="tf" type="static_transform_publisher" name="grasp_pose_offset_broadcaster_2" args=" 0.18 0 0 -1.5708 0 0 grasp_pose_frame_offset  grasp_pose_frame_offset_2 100" /> 
+
+<!-- <node pkg="tf" type="static_transform_publisher" name="grasp_pose_offset_broadcaster_final" args=" 0 0 0 0 1.5708 0 grasp_pose_frame  grasp_pose_frame_offset_final 100" /> -->
+<!--<node pkg="tf" type="static_transform_publisher" name="grasp_pose_offset_broadcaster_final_2" args=" 0 0 0 -1.5708 0 0 grasp_pose_frame_offset_final  grasp_pose_frame_offset_final_2 100" /> -->
+<!--<node pkg="tf" type="static_transform_publisher" name="grasp_pose_offset_broadcaster_final_3" args=" 0 0 0 0 3.14 0 grasp_pose_frame_offset_final_2  grasp_pose_frame_offset_final_3 100" /> -->
+<!--<node pkg="tf" type="static_transform_publisher" name="grasp_pose_offset_broadcaster_final_4" args=" 0 0 -0.145 0 0 0 grasp_pose_frame_offset_final_3  grasp_pose_frame_offset_final_4 100" /> -->
+
+<!-- <node pkg="tf" type="static_transform_publisher" name="robot_base_broadcaster" args=" -0.544735  -0.253852   0.186229  -2.440584  1.413837  2.21762   end_effector_frame base_link 100" /> --> 
+
+
+<!-- 3 grasp poses -->
+<!-- <node pkg="tf" type="static_transform_publisher" name="estimate_grasp_broadcaster" args=" -0.182985 0.155711 0.915473 2.79206 -1.31479 -2.2574871028702 camera_depth_optical_frame grasp_pose_frame 100" /> -->
+
+<!-- <node pkg="tf" type="static_transform_publisher" name="estimate_grasp_broadcaster" args=" -0.2463 0.16392 0.887704
+ 3.07776 -0.445304 1.53358 camera_depth_optical_frame grasp_pose_frame 100" /> -->
+
+<!-- <node pkg="tf" type="static_transform_publisher" name="estimate_grasp_broadcaster" args="-0.0658816 0.12839 0.931555 0.134796 -1.00161 1.0496 camera_depth_optical_frame grasp_pose_frame 100" /> -->
+
+<!-- x y z qx qy qz qw -->
+<!-- <node pkg="tf" type="static_transform_publisher" name="estimate_base_broadcaster" args="0.618768 0.203293 0.528897 0.436401 0.578853 -0.570743 0.385662 camera_depth_optical_frame estimate_robot_base_frame 100" /> -->
+
+<!-- <node pkg="tf" type="static_transform_publisher" name="grasp_broadcaster" args="-0.0825450502821  0.0221337213839  0.75889357949  -0.428664674002  0.446237888054  0.557491236418  0.553463518079  camera_rgb_optical_frame  grasp_pose_frame  100" /> -->
+
+<!-- <node pkg="tf" type="static_transform_publisher" name="base_to_grasp_broadcaster" args="-0.038  -0.616  0.204  0.351  0.935  0.044  -0.038  base_link grasp_pose_frame  100" /> -->
+
+<!-- <node pkg="tf" type="static_transform_publisher" name="grasp_aubo_broadcaster" args="0 0 0 0.5 -0.5 0.5 -0.5 grasp_pose_frame_offset grasp_aubo_frame 100" /> -->
+
+<!-- <node pkg="tf" type="static_transform_publisher" name="grasp_pose_offset_broadcaster" args="-0.115 0 0.0 0.0 0.0 0.0 grasp_pose_frame grasp_pose_frame_offset 100" /> -->
+
+
+<!-- <node pkg="tf" type="static_transform_publisher" name="estimate_base_broadcaster_2" args="-0.731245 0.179875 -0.693763 -0.031560 0.738889 -0.671178 -0.050674 grasp_pose_frame estimate_base_frame_2 100" /> -->
+
+</launch>
+<!-- 1.5708 -2.829 -->
